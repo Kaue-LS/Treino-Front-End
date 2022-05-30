@@ -1,0 +1,25 @@
+@mixin centralizar ($just,$align) {
+    justify-content:$just ;
+    align-items: $align;
+}
+
+.Extraction_List{
+    display: flex;
+    flex-direction: column;
+    @include centralizar(center,center );
+
+    .Title{
+        font-size: 20px;
+    }
+    .Extraction_Table{
+        width: 100%;
+
+        .Table{
+            margin: 0 auto;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            @include centralizar(center,center )
+        }
+    }
+}

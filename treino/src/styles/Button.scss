@@ -1,0 +1,17 @@
+$button-add:#333333;
+
+@mixin Commom {
+    padding: 10px 10px;
+    font-size: 16px;
+    color: white;
+    width: 100%;
+    border: none;
+    border-radius:5px;
+    cursor: pointer;
+}
+
+.Add{
+    @include Commom();
+    background-color:$button-add ;
+    font-weight: 100;
+}

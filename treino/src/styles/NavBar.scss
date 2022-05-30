@@ -1,0 +1,57 @@
+$color-background:#e0e0e0;
+$font-color:#353535;
+@mixin centralizar ($justify,$align){
+    justify-content: $justify;
+    align-items: $align;
+}
+@mixin tema($cor){
+    background-color:$cor;
+}
+
+.Header{
+    @include tema($color-background);
+    padding: 0px 10px;
+    .Nav{
+        color: $font-color;
+        display: flex;
+        @include centralizar(space-between,center );
+
+        div{
+            .Logo{
+                font-size:34px;
+            }
+            .Title{
+                font-weight: 700;
+                font-size: 20px;
+            }
+            .Menu{
+                font-size:20px;
+            }
+        }
+    }
+}
+
+@media (min-width:768px) {
+    .Header{
+        @include tema($color-background);
+        padding: 0px 10px;
+        .Nav{
+            color: $font-color;
+            display: flex;
+            @include centralizar(space-between,center );
+    
+            div{
+                .Logo{
+                    font-size:64px;
+                }
+                .Title{
+                font-weight: 700;
+                    font-size: 35px;
+                }
+                .Menu{
+                    font-size:40px;
+                }
+            }
+        }
+    }
+}
