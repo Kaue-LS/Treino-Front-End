@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import '../../styles/ExtractionList.scss'
 
 import { useExtraction } from "../context/ExtractionContext";
-import { getList,deleteData, List} from "../lib/LocalStorage";
+import {  SendList} from "../lib/LocalStorage";
 import { TableBody } from "../table/table_body/Table_body";
 import { TableFooter } from "../table/table_footer/Table_footer";
 import { TableHead } from "../table/table_head/Table_head";
@@ -12,33 +12,55 @@ import { TableHead } from "../table/table_head/Table_head";
 export const ExtractionList=()=>{
     const {activeSearchValue,setActiveSearchValue,setActiveSumValue} =useExtraction()
 
-    let list1=JSON.parse(getList())
-    var list3=list1.concat(List)
-    // console.log(list)
-    // List.concat(list)
 
-    const [data,setData]=useState(list3)
 
+    const [data,setData]=useState([])
+    const [loadRemaining,setLoadRemaing]=useState(false)
 
     const SearchValue=()=>{
-        let get=JSON.parse(getList())
+        let get=SendList()
         setData(get)
         setActiveSearchValue(false)
         setActiveSumValue(true)
-        deleteData()
+    }
+    
+    const LoadRemainingValues=()=>{
+
+        let get=SendList()
+        setData(get)
+        setLoadRemaing(true)
+        setActiveSumValue(true)
+        // var get= JSON.parse(getList())
+        // for(let i=0; i<get.length;i++){
+        //     console.log(i)
+        //     console.log(get.length)
+        //     // console.log(get[i])
+
+        //     // List.push(get[i])
+        //     // setData(List)
+        //     console.log(data)
+        // }
+        // // List.push(get)
+        // console.log('ta aq')
+        // setLoadRemaing(true)
+        // setActiveSumValue(true)
+        // setActiveSearchValue(false)
+
     }
 
     useEffect(()=>{
 
-        // Buscar dados no localStorage
-        if(activeSearchValue){
+        if(!loadRemaining){
+            LoadRemainingValues()
+        }
+        else if(activeSearchValue){
            SearchValue()
         }
     
-    })
+    },)
     
     // let get=JSON.parse(getList())
-            console.log(List)
+            // console.log(data)
 
     return(
         <div className="Extraction_List">
